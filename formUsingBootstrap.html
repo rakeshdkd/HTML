@@ -99,23 +99,77 @@
             localStorage.setItem('Time', Time);
 
 
-            if (Name === '' || Email === '' || Date === '' || Date === '' || Phone === '' || Time === '') {
-                confirm1.textContent = "Please fill required field.";
-                confirm1.style.backgroundColor = "red";
+            // if (Name === '' || Email === '' || Date === '' || Date === '' || Phone === '' || Time === '') {
+            //     confirm1.textContent = "Please fill required field.";
+            //     confirm1.style.backgroundColor = "red";
 
-                setTimeout(() => confirm1.remove(), 3000);
+            //     setTimeout(() => confirm1.remove(), 3000);
 
-            } else {
-                confirm2.textContent = "Success !";
-                confirm2.style.backgroundColor = "green";
+            // } else {
+            //     confirm2.textContent = "Success !";
+            //     confirm2.style.backgroundColor = "green";
 
-                setTimeout(() => confirm2.remove(), 3000);
+            //     setTimeout(() => confirm2.remove(), 3000);
 
-                
+
+            // }
+
+            // storing users details as object and then convert them to strings.
+            /*
+            Question :- Everytime you add a new user, the older user gets removed.
+            
+            Why does this happen any ideas. Write the reason in the answer.
+            
+            
+            If every time a new user is added, the older user gets removed, it is likely because the code responsible for adding the user is overwriting the previous user's data instead of appending it.
+            
+            For example, let's say the code looks something like this:
+            
+            javascript
+            const user = { name: 'John', age: 30 };
+            localStorage.setItem('user', JSON.stringify(user));
+            
+            
+            If this code is run multiple times with different user objects, the previously stored user object will be overwritten with the latest one. This is because the setItem method of localStorage always stores the value associated with a given key, overwriting the previous value if it existed.
+            
+            To fix this issue, you can either give each user a unique key, or store all users in an array or object and save the entire array or object to localStorage. Here's an example of how you could store all users in an array:
+            
+            javascript
+            const user1 = { name: 'John', age: 30 };
+            const user2 = { name: 'Jane', age: 25 };
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            users.push(user1);
+            users.push(user2);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            
+            In this code, we first check if there are any previously stored users in localStorage, and if not, we initialize an empty array. We then push the new users onto the array, and finally save the entire array to localStorage. This way, all users are stored and none of them get overwritten.
+            */
+            let obj = {
+                name: "RAkesh Dhakad",
+                age: 26,
+                degree: "Mechanical"
             }
 
+            localStorage.setItem("user details", obj);
+            // to convert into the strings.
+            let obj_serialized = JSON.stringify(obj)
+
+            localStorage.setItem("user details", obj_serialized);
+
+            console.log(obj_serialized)
+            console.log(obj)
+
+            let obj_deserialized = JSON.parse(localStorage.getItem("obj"));
+
+            console.log(obj_deserialized)
+
+
+            const user = { name: 'John', age: 30 };
+            localStorage.setItem('user', JSON.stringify(user));
+
+
         });
-        Name= ''
 
     </script>
 
