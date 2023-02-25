@@ -48,7 +48,8 @@
                     placeholder="PLease enter your suitable date"
                     style="background-color: rgb(253, 253, 253);border-radius: 4px;" required>
             </div>
-
+            <div class="reqFields my-3 text-center"></div>
+            <div class="success my-3 text-center"></div>
             <div class="d-grid gap-2">
                 <button class="btn btn-primary mb-4" type="button"><b>Get a call
                         back</b></button>
@@ -74,18 +75,22 @@
         bttn.addEventListener('click', (event) => {
             event.preventDefault();
 
-            const Name = document.getElementById('exampleInputName').value;
-            const Email = document.getElementById('exampleInputEmail1').value;
-            const Phone = document.getElementById('exampleInputNumber').value;
-            const Date = document.getElementById('exampleInputCallDate').value;
-            const Time = document.getElementById('exampleInputCallTime').value;
-            console.log('hi')
+            var Name = document.getElementById('exampleInputName').value;
+            var Email = document.getElementById('exampleInputEmail1').value;
+            var Phone = document.getElementById('exampleInputNumber').value;
+            var Date = document.getElementById('exampleInputCallDate').value;
+            var Time = document.getElementById('exampleInputCallTime').value;
+
+            var confirm1 = document.querySelector('.reqFields');
+            var confirm2 = document.querySelector('.success');
+            console.log('Hi')
             console.log(Name);
             console.log(Email);
             console.log(Phone);
             console.log(Date);
             console.log(Time);
-            alert("Your form is submitted.");
+            // alert("Your form is submitted.");
+
             // setting data to the local-storage
             localStorage.setItem('Name', Name)
             localStorage.setItem('Email', Email)
@@ -94,7 +99,23 @@
             localStorage.setItem('Time', Time);
 
 
+            if (Name === '' || Email === '' || Date === '' || Date === '' || Phone === '' || Time === '') {
+                confirm1.textContent = "Please fill required field.";
+                confirm1.style.backgroundColor = "red";
+
+                setTimeout(() => confirm1.remove(), 3000);
+
+            } else {
+                confirm2.textContent = "Success !";
+                confirm2.style.backgroundColor = "green";
+
+                setTimeout(() => confirm2.remove(), 3000);
+
+                
+            }
+
         });
+        Name= ''
 
     </script>
 
