@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Call back Form</title>
+    <!-- <link rel="stylesheet" href="style.css" type="text/css"> -->
+    <style>
+        
+        body {
+            background: url('illustration-light-bulb-ideas.avif');
+            background-size: 100%;
+            background-position: -50px 180px;
+        }
+
+        div.main {
+            width: 650px;
+            margin: 100px auto 0px auto;
+            background-color: rgb(248, 246, 244);
+        }
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            color: rgb(206, 63, 63);
+            font-weight: 700;
+        }
+
+        p {
+            color: rgb(96, 75, 116);
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        div.register {
+            background-color: rgba(155, 0, 0, 0.7, );
+            width: 150;
+            font-size: 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(214, 138, 219, 0.903);
+            box-shadow: 2px 2px 15px;
+            color: rgb(65, 59, 65);
+        }
+
+        form#register {
+            margin: 1px;
+
+        }
+
+        label {
+            margin: 5px;
+            font-family: sans-serif;
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        input {
+            margin: 2px;
+            width: 630px;
+            border: 1px solid rgb(182, 19, 232);
+            border-radius: 3px;
+            outline: 0;
+            padding: 6px;
+            background-color: rgb(237, 219, 235);
+
+        }
+
+        input#date {
+            margin: 3px;
+            width: 300px;
+            border: 1px solid rgb(182, 19, 232);
+            border-radius: 3px;
+            outline: 0;
+            padding: 6px;
+            background-color: rgb(237, 219, 235);
+        }
+
+        button {
+            width: 630px;
+            margin: 15px 10px;
+            padding: 7px;
+            font-size: 16px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-weight: 600;
+            border: none;
+            border-radius: 3px;
+            background-color: rgba(85, 212, 75, 0.668);
+        }
+
+        button:hover {
+            background-color: green;
+        }
+
+        input#time {
+            margin: 3px;
+            width: 300px;
+            border: 1px solid rgb(182, 19, 232);
+            border-radius: 3px;
+            outline: 0;
+            padding: 6px;
+            background-color: rgb(237, 219, 235);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="register">
+
+            <form action="#" id="my-form">
+
+                <h1>Book a call</h1>
+                <p><i>Book a call slot and our representative will call you within 1 hr of selected time.</i></p><br>
+                <hr>
+                <label for="name">Name :</label><br>
+                <input type="text" id="name" name="name" placeholder="Name" required><br>
+                <label for="email">Email :</label><br>
+                <input type="text" id="email" name="email" placeholder="Email" required><br>
+                <label for="phone">Phone :</label><br>
+                <input type="text" id="phone" name="phone" placeholder="Phone" required><br>
+                <label for="time_for_call">Time for call :</label><br>
+                <input type="date" id="date" placeholder="Enter date" name="Date" required>
+                <input type="time" id="time" placeholder="Enter time" name="time"><br><br>
+                <!-- <button class="button" onclick="onsignup(event)"> Get a Call </button> -->
+                <button class="button" onclick="click(e)"> Get a Call </button>
+
+            </form>
+
+        </div>
+    </div>
+    <script>
+        // var event;
+        // function onsignup(event) {
+        //     event.preventDefault();
+        //     const Name = document.getElementById('name').value;
+        //     const Email = document.getElementById('email').value;
+        //     const Phone = document.getElementById('phone').value;
+        //     const Date = document.getElementById('date').value;
+        //     const Time = document.getElementById('time').value;
+
+        //     console.log(Name);
+        //     console.log(Email);
+        //     console.log(Phone);
+        //     console.log(Date);
+        //     console.log(Time);
+        // }
+        var e;
+        const btn = document.querySelector('.button');
+
+        btn.addEventListener('mouseout', (e) => {
+            e.preventDefault();
+            document.querySelector('#my-form').style.background = "#ccb"
+        });
+        btn.addEventListener('mouseover', (e) => {
+            e.preventDefault();
+            document.querySelector('#my-form').style.background = "#cca"
+        });
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            alert("Your form is submitted.")
+
+            const Name = document.getElementById('name').value;
+            const Email = document.getElementById('email').value;
+            const Phone = document.getElementById('phone').value;
+            const Date = document.getElementById('date').value;
+            const Time = document.getElementById('time').value;
+
+            console.log(Name);
+            console.log(Email);
+            console.log(Phone);
+            console.log(Date);
+            console.log(Time);
+        });
+
+
+    </script>
+</body>
+
+</html>
