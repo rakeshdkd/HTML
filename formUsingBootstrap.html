@@ -98,6 +98,14 @@
             localStorage.setItem('Date', Date)
             localStorage.setItem('Time', Time);
 
+            const user1 = {
+                name: Name,
+                email: Email,
+                phone: Phone,
+                date: Date,
+                time: Time
+            };
+
 
             // if (Name === '' || Email === '' || Date === '' || Date === '' || Phone === '' || Time === '') {
             //     confirm1.textContent = "Please fill required field.";
@@ -145,29 +153,37 @@
             
             In this code, we first check if there are any previously stored users in localStorage, and if not, we initialize an empty array. We then push the new users onto the array, and finally save the entire array to localStorage. This way, all users are stored and none of them get overwritten.
             */
-            let obj = {
-                name: "RAkesh Dhakad",
-                age: 26,
-                degree: "Mechanical"
-            }
+            // let obj = {
+            //     name: "RAkesh Dhakad",
+            //     age: 26,
+            //     degree: "Mechanical"
+            // }
 
-            localStorage.setItem("user details", obj);
-            // to convert into the strings.
-            let obj_serialized = JSON.stringify(obj)
+            // localStorage.setItem("user details", obj);
+            // // to convert into the strings.
+            // let obj_serialized = JSON.stringify(obj)
 
-            localStorage.setItem("user details", obj_serialized);
+            // localStorage.setItem("user details", obj_serialized);
 
-            console.log(obj_serialized)
-            console.log(obj)
+            // console.log(obj_serialized)
+            // console.log(obj)
 
-            let obj_deserialized = JSON.parse(localStorage.getItem("obj"));
+            // let obj_deserialized = JSON.parse(localStorage.getItem("obj"));
 
-            console.log(obj_deserialized)
+            // console.log(obj_deserialized)
 
 
-            const user = { name: 'John', age: 30 };
+            // const user = { name: 'John', age: 30 };
+            // localStorage.setItem('user', JSON.stringify(user));
+
+
+            // ****Question:- if i dont want to loose previous data and store new data as well, so the code for that is.
+
+            // const user2 = { name: 'Jane', age: 205 };
+            let user = JSON.parse(localStorage.getItem('user')) || [];
+            user.push(user1);
+            // users.push(user2);
             localStorage.setItem('user', JSON.stringify(user));
-
 
         });
 
