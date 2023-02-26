@@ -51,8 +51,7 @@
             <div class="reqFields my-3 text-center"></div>
             <div class="success my-3 text-center"></div>
             <div class="d-grid gap-2">
-                <button class="btn btn-primary mb-4" type="button"><b>Get a call
-                        back</b></button>
+                <button class="btn btn-primary mb-4" type="button"><b>Get a call back</b></button>
 
             </div>
         </form>
@@ -62,7 +61,7 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script>
-        const bttn = document.querySelector('.btn');
+        // const bttn = document.querySelector('.btn');
 
         // bttn.addEventListener('mouseout', (event) => {
         //     event.preventDefault();
@@ -72,6 +71,11 @@
         //     event.preventDefault();
         //     document.querySelector('#my-form').style.background = "#ccb"
         // });
+
+        // var div = document.querySelector('#my-form');
+
+        //*****// This function have different functinality;
+        /*
         bttn.addEventListener('click', (event) => {
             event.preventDefault();
 
@@ -81,8 +85,8 @@
             var Date = document.getElementById('exampleInputCallDate').value;
             var Time = document.getElementById('exampleInputCallTime').value;
 
-            var confirm1 = document.querySelector('.reqFields');
-            var confirm2 = document.querySelector('.success');
+            // var confirm1 = document.querySelector('.reqFields');
+            // var confirm2 = document.querySelector('.success');
             console.log('Hi')
             console.log(Name);
             console.log(Email);
@@ -92,19 +96,12 @@
             // alert("Your form is submitted.");
 
             // setting data to the local-storage
-            localStorage.setItem('Name', Name)
-            localStorage.setItem('Email', Email)
-            localStorage.setItem('Phone number', Phone)
-            localStorage.setItem('Date', Date)
-            localStorage.setItem('Time', Time);
+            // localStorage.setItem('Name', Name)
+            // localStorage.setItem('Email', Email)
+            // localStorage.setItem('Phone number', Phone)
+            // localStorage.setItem('Date', Date)
+            // localStorage.setItem('Time', Time);
 
-            const user1 = {
-                name: Name,
-                email: Email,
-                phone: Phone,
-                date: Date,
-                time: Time
-            };
 
 
             // if (Name === '' || Email === '' || Date === '' || Date === '' || Phone === '' || Time === '') {
@@ -152,40 +149,105 @@
             
             
             In this code, we first check if there are any previously stored users in localStorage, and if not, we initialize an empty array. We then push the new users onto the array, and finally save the entire array to localStorage. This way, all users are stored and none of them get overwritten.
-            */
-            // let obj = {
-            //     name: "RAkesh Dhakad",
-            //     age: 26,
-            //     degree: "Mechanical"
-            // }
+            // */
+        // let obj = {
+        //     name: "RAkesh Dhakad",
+        //     age: 26,
+        //     degree: "Mechanical"
+        // }
 
-            // localStorage.setItem("user details", obj);
-            // // to convert into the strings.
-            // let obj_serialized = JSON.stringify(obj)
+        // localStorage.setItem("user details", obj);
+        // // to convert into the strings.
+        // let obj_serialized = JSON.stringify(obj)
 
-            // localStorage.setItem("user details", obj_serialized);
+        // localStorage.setItem("user details", obj_serialized);
 
-            // console.log(obj_serialized)
-            // console.log(obj)
+        // console.log(obj_serialized)
+        // console.log(obj)
 
-            // let obj_deserialized = JSON.parse(localStorage.getItem("obj"));
+        // let obj_deserialized = JSON.parse(localStorage.getItem("obj"));
 
-            // console.log(obj_deserialized)
-
-
-            // const user = { name: 'John', age: 30 };
-            // localStorage.setItem('user', JSON.stringify(user));
+        // console.log(obj_deserialized)
 
 
-            // ****Question:- if i dont want to loose previous data and store new data as well, so the code for that is.
+        // const user = { name: 'John', age: 30 };
+        // localStorage.setItem('user', JSON.stringify(user));
 
-            // const user2 = { name: 'Jane', age: 205 };
-            let user = JSON.parse(localStorage.getItem('user')) || [];
-            user.push(user1);
-            // users.push(user2);
-            localStorage.setItem('user', JSON.stringify(user));
+
+        // // ****Question:- if i dont want to loose previous data and store new data as well, so the code for that is.
+
+        // const user2 = { name: 'Jane', age: 205 };
+        // const user1 = {
+        //     name: Name,
+        //     email: Email,
+        //     phone: Phone,
+        //     date: Date,
+        //     time: Time
+        // };
+
+        // // let user = JSON.parse(localStorage.getItem('user')) || [];
+        // // user.push(user1);
+        // // // users.push(user2);
+        // // localStorage.setItem('user', JSON.stringify(user));
+
+        // });
+
+
+
+        // /*
+
+        // 	Delete data from Local Storage:
+
+        const bttn = document.querySelector('.btn');
+
+        var div = document.querySelector('#my-form');
+
+
+
+        bttn.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            var Name = document.getElementById('exampleInputName').value;
+            var Email = document.getElementById('exampleInputEmail1').value;
+            var Phone = document.getElementById('exampleInputNumber').value;
+            var Date = document.getElementById('exampleInputCallDate').value;
+            var Time = document.getElementById('exampleInputCallTime').value;
+
+            var li = document.createElement('li');
+            li.className = "Newitem";
+            li.style.marginTop = "20px"
+            li.innerHTML = Name + " " + Email + " " + Phone + " " + Date + " " + Time;
+            div.insertAdjacentElement('beforeend', li);
+            var del = document.createElement('button');
+            del.className = "delet-button";
+            del.style.marginLeft = "5px"
+            del.style.borderRadius = "4px"
+            del.style.backgroundColor = "red"
+            del.innerHTML = "Delet"
+            li.insertAdjacentElement('beforeend', del)
+
+            var delet = document.querySelector('.delet-button');
+
+            localStorage.setItem('Name', Name)
+            localStorage.setItem('Email', Email)
+            localStorage.setItem('Phone number', Phone)
+            localStorage.setItem('Date', Date)
+            localStorage.setItem('Time', Time);
+
+            delet.addEventListener('click', (Event) => {
+                li.remove();
+                del.remove();
+
+                localStorage.removeItem('Email')
+                localStorage.removeItem('Name')
+                localStorage.removeItem('Phone number')
+                localStorage.removeItem('Date')
+                localStorage.removeItem('Time');
+            });
 
         });
+
+        // */
 
     </script>
 
