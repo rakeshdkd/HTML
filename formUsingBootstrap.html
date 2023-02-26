@@ -226,27 +226,35 @@
             del.innerHTML = "Delet"
             li.insertAdjacentElement('beforeend', del)
 
-            var delet = document.querySelector('.delet-button');
 
-            localStorage.setItem('Name', Name)
-            localStorage.setItem('Email', Email)
-            localStorage.setItem('Phone number', Phone)
-            localStorage.setItem('Date', Date)
-            localStorage.setItem('Time', Time);
+            const user1 = {
+                name: Name,
+                email: Email,
+                phone: Phone,
+                date: Date,
+                time: Time
+            };
+
+            let user = JSON.parse(localStorage.getItem('user')) || [];
+            user.push(user1);
+            // users.push(user2);
+            localStorage.setItem('user', JSON.stringify(user));
+
+            var delet = document.querySelector('.delet-button');
 
             delet.addEventListener('click', (Event) => {
                 li.remove();
                 del.remove();
 
-                localStorage.removeItem('Email')
-                localStorage.removeItem('Name')
-                localStorage.removeItem('Phone number')
-                localStorage.removeItem('Date')
-                localStorage.removeItem('Time');
+                // localStorage.removeItem('Email')
+                // localStorage.removeItem('Name')
+                // localStorage.removeItem('Phone number')
+                // localStorage.removeItem('Date')
+                // localStorage.removeItem('Time');
+                localStorage.removeItem('user');
             });
 
         });
-        
 
         // */
 
