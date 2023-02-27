@@ -42,9 +42,8 @@ btn.style.borderRadius = "4px"
 btn.style.backgroundColor = "green"
 btn.style.color = "white"
 
-var Name = document.querySelector('#name')
-var email = document.querySelector('#email');
 
+/*
 btn.addEventListener('click', (Event) => {
     // console.log(Name.value);
     // console.log(email.value);
@@ -74,9 +73,70 @@ btn.addEventListener('click', (Event) => {
         localStorage.removeItem('Email');
     });
 });
+*/
+
+function saveToLocalStorage(event) {
+    event.preventDefault();
+    const Name = document.querySelector('#name').value;
+    const email = document.querySelector('#email').value;
+    // console.log(Name, email);
+    const obj = {
+        Name,
+        email
+    };
+
+    localStorage.setItem(obj.email, JSON.stringify(obj));
+    showUserOnScreen(obj)
+
+}
+
+function showUserOnScreen(obj) {
+    const parentElem = document.querySelector('.form-control');
+    const childElem = document.createElement('li');
+    childElem.style.marginBlock = "10px"
+    childElem.innerHTML = obj.Name + " - " + obj.email;
+    parentElem.appendChild(childElem);
+    // console.log(childElem);
+
+    // Adding delet button.
+    const del = document.createElement('input');
+    del.value = "Delet";
+    del.type = "button";
+    del.style.background = "red"
+    del.style.marginLeft = "8px"
+    del.style.borderRadius = "5px"
+
+    // Adiing edit button.
+    const edit = document.createElement('input');
+    edit.type = 'button';
+    edit.value = 'Edit';
+    edit.style.marginLeft = '5px';
+    edit.style.borderRadius = '4px';
+    edit.style.backgroundColor = 'rgba(210,124,153,0.5)'
+
+    del.onclick = () => {
+        localStorage.removeItem(obj.email);
+        parentElem.removeChild(childElem);
+
+    }
+    edit.onclick = () => {
+        localStorage.removeItem(obj.email);
+        parentElem.removeChild(childElem);
+
+        
+        document.getElementById('name').value = obj.Name;
+        document.getElementById('email').value = obj.email;
+        
+
+    }
+
+    childElem.appendChild(del);
+    childElem.appendChild(edit);
+    parentElem.appendChild(childElem);
 
 
 
+}
 
 
 
