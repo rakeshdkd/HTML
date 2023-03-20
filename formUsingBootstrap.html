@@ -59,7 +59,7 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.4/axios.min.js"></script>
-    
+
     <script>
         // const bttn = document.querySelector('.btn');
 
@@ -217,7 +217,7 @@
             };
 
 
-            axios.post('https://crudcrud.com/api/e9ce1194f6474e33b931f16bfa7763dd/appointmentData', obj)
+            axios.post('https://crudcrud.com/api/7750d651c6fc4c54a87c9e4249d032ad/appointmentData', obj)
                 .then((response) => {
                     showUserOnScreen(response.data)
                 }).catch(err => {
@@ -227,6 +227,23 @@
             // localStorage.setItem(obj.Email, JSON.stringify(obj));
             // showUserOnScreen(obj)
         }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            axios.get("https://crudcrud.com/api/7750d651c6fc4c54a87c9e4249d032ad/appointmentData")
+
+                .then(response => {
+                    for (let i = 0; i < response.data.length; i++) {
+                        showUserOnScreen(response.data[i])
+                        // console.log(response.data[i]._id)
+
+                    }
+                    // console.log(response.data[2])
+
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        })
 
         function showUserOnScreen(obj) {
 
@@ -256,14 +273,20 @@
             edit.style.backgroundColor = 'rgba(210,124,153,0.5)'
 
             del.onclick = () => {
-                localStorage.removeItem(obj.Email);
+                // localStorage.removeItem(obj.Email);
                 parentElem.removeChild(childElem);
+                // console.log(childElem.innerText)
 
             }
             edit.onclick = () => {
-                localStorage.removeItem(obj.Email);
+                // localStorage.removeItem(obj.Email);
                 parentElem.removeChild(childElem);
 
+                // document.getElementById('exampleInputName').value = '';
+                // document.getElementById('exampleInputEmail1').value = '';
+                // document.getElementById('exampleInputNumber').value = '';
+                // document.getElementById('exampleInputCallDate').value = '';
+                // document.getElementById('exampleInputCallTime').value = '';
                 document.getElementById('exampleInputName').value = obj.Name;
                 document.getElementById('exampleInputEmail1').value = obj.Email;
                 document.getElementById('exampleInputNumber').value = obj.Phone;
