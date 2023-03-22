@@ -87,7 +87,7 @@ function saveToLocalStorage(event) {
         contactNo
     };
 
-    axios.post('https://crudcrud.com/api/e9ce1194f6474e33b931f16bfa7763dd/appointmentData', obj)
+    axios.post('https://crudcrud.com/api/7750d651c6fc4c54a87c9e4249d032ad/appointmentData', obj)
         .then((response) => {
             showUserOnScreen(response.data)
         }).catch(err => {
@@ -110,6 +110,22 @@ function saveToLocalStorage(event) {
 
 }
 
+window.addEventListener("DOMContentLoaded", () => {
+    axios.get("https://crudcrud.com/api/7750d651c6fc4c54a87c9e4249d032ad/appointmentData")
+
+        .then(response => {
+            for (let i = 0; i < response.data.length; i++) {
+                showUserOnScreen(response.data[i])
+                // console.log(response.data[i]._id)
+
+            }
+            // console.log(response.data[2])
+
+        })
+        .catch(err => {
+            console.log(err)
+        })
+})
 function showUserOnScreen(obj) {
     const parentElem = document.querySelector('.form-control');
     const childElem = document.createElement('li');
@@ -135,12 +151,14 @@ function showUserOnScreen(obj) {
     edit.style.backgroundColor = 'rgba(210,124,153,0.5)'
 
     del.onclick = () => {
-        localStorage.removeItem(obj.email);
+        // localStorage.removeItem(obj.email);
         parentElem.removeChild(childElem);
+
+        axios.get('')
 
     }
     edit.onclick = () => {
-        localStorage.removeItem(obj.email);
+        // localStorage.removeItem(obj.email);
         parentElem.removeChild(childElem);
 
 
